@@ -6,6 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatError, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,14 +19,14 @@ export class SignUpComponent {
   signUpForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder ,  private authService:AuthService) {
     this.signUpForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
       role: ['', Validators.required],
-      photo: [null, Validators.required] // You can handle photo upload differently if needed
+      // photo: [null, Validators.required] // You can handle photo upload differently if needed
     });
   }
 
@@ -34,8 +35,9 @@ export class SignUpComponent {
 
   onSubmit() {
     if (this.signUpForm.valid) {
-      console.log(this.signUpForm.value);
-      // Handle form submission logic here
+      this.authService.SignUp(this.signUpForm.value).subscribe((res:any)=>{
+        localStorage.setItem('authToken' , res?.token)
+      })
     }
   }
 
@@ -44,7 +46,6 @@ export class SignUpComponent {
     if (input.files) {
       const file = input.files[0];
       this.signUpForm.patchValue({ photo: file });
-      // You can also perform validation or additional actions here
     }
   }
 }
