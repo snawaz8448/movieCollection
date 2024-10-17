@@ -9,7 +9,7 @@ import { HometemplateComponent } from './admin/hometemplate/hometemplate.compone
 import { ProfiletemplateComponent } from './admin/profiletemplate/profiletemplate.component';
 
 export const routes: Routes = [
-    {path:'' , redirectTo:'dashboard' , pathMatch:"full"},
+    {path:'' , redirectTo:'signin' , pathMatch:"full"},
     { path:'dashboard' , loadComponent:()=> import ('./admin/dashboard/template/template.component').then(m=>m.TemplateComponent),
         children:[
             {path:'' , redirectTo:'overview' , pathMatch:'full'} ,
