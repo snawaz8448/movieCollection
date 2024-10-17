@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1f1f1f;
+    color: white;
+}
+
+/* Footer styles */
+footer {
+    // background: linear-gradient(45deg, #6a11cb, #2575fc);
+    padding: 18px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    opacity: 0; /* Initially invisible */
+    transform: translateY(50px); /* Slide from below */
+    animation: fadeInUp 1.5s ease forwards; /* Animation applied */
+}
+
+footer h3 {
+    margin: 0;
+    padding-bottom: 5px;
+    font-size: 1.8rem;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+/* Social media icons */
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffd700; /* Change color to gold on hover */
+    transform: translateY(-5px); /* Lift up the icon slightly */
+}
+
+/* Footer link styles */
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+footer a:hover {
+    color: #ffd700; /* Gold color on hover */
+}
+/* Copyright styles */
+.copyright {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

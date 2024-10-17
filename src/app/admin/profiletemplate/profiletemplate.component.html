@@ -1,0 +1,46 @@
+<div class="profile-card flex justify-center flex-col  relative">
+    <span class="absolute top-3 right-5 "  matTooltip="VIP">
+        <i class="fa-solid fa-star" style="font-size: 1.2rem; color: rgb(231, 168, 31);"></i>
+    </span>
+
+    <!-- Avatar and user details -->
+     <div class="prof w-full flex justify-center">
+    <img src="https://media.istockphoto.com/id/1437816897/photo/business-woman-manager-or-human-resources-portrait-for-career-success-company-we-are-hiring.jpg?s=612x612&w=0&k=20&c=tyLvtzutRh22j9GqSGI33Z4HpIwv9vL_MZw_xOE19NQ=" alt="Avatar" class="avatar">
+</div>
+    <h2 class="profile-name">John Doe</h2>
+    <p class="bio">Movie enthusiast | Loves Sci-Fi & Thrillers</p>
+  
+    <!-- User info section -->
+    <div class="user-info">
+      <p><strong>Email:</strong> johndoe&#64;example.com</p>
+      <p><strong>Location:</strong> Los Angeles, CA</p>
+    </div>
+  
+    <!-- Statistics section -->
+    <div class="stats">
+      <div class="stat-item">
+        <p><strong>Watched:</strong> 120 movies</p>
+      </div>
+      <div class="stat-item">
+        <p><strong>Favorites:</strong> Sci-Fi, Thriller</p>
+      </div>
+    </div>
+  
+    <!-- Action buttons -->
+    <div class="actions">
+      <button class="button" matTooltip="Recent Watchlist">Watchlist</button>
+      <button class="button " matTooltip="Favorite Movies">Favorites</button>
+    </div>
+  
+    <!-- Change Password and Update Profile buttons -->
+    <div class="profile-actions flex justify-center gap-4 mt-3">
+      <button class="button" matTooltip="Update Profile" (click)="openUpdateProfile()">Update Profile</button>
+      <button class="button" matTooltip="Change Password" (click)="openChangePassword()">Change Password</button>
+    </div>
+  
+    <!-- Social media links -->
+    <div class="social-links">
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>

@@ -75,3 +75,20 @@ mat-form-field{
 .mat-mdc-raised-button:not(:disabled) {
     background-color:rgb(187, 0, 224) !important;
 }
+
+//****** ------------scrollbar start------------// *******
+
+::-webkit-scrollbar {
+  width: 6px; 
+  height: 6px; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f200ff; /* Change the color as needed */
+  border-radius: 6px; /* Adjust the border-radius as needed */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #000000; /* Change the color as needed */
+}
+  // ------------scrollbar end------------// 

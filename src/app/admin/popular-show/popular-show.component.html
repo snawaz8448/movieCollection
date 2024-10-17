@@ -1,0 +1,24 @@
+
+<span  style="color: rgb(246, 255, 0);">Popular Show</span>
+<div class="latest-container">
+    <button class="scroll-btn left-btn" (click)="scrollLeft()"><i class="fa-solid fa-angle-left"></i></button>
+    <div class="latest" #latest>
+      <!-- Add content (e.g., movie posters or any other content) here -->
+      @for( item of moviesx ;let first=$first;track $index ){
+        <div class="moviex-card item">
+            <div class="flex flex-col">
+            <img [src]="item.image" alt="Movie Title" class="imgx">
+            <div class="moviex-info">
+                <h2 class="moviex-title text-center ">{{item.title}}</h2>
+            </div>
+        </div>
+            <div class="overlayx flex justify-end items-center flex-col">
+                <p class="text-center">Watch Now</p>
+                <p class="moviex-description text-center">{{item.description}}</p>
+            </div>
+        </div>
+    }        
+    </div>
+    <button class="scroll-btn right-btn" (click)="scrollRight()"><i class="fa-solid fa-angle-right"></i></button>
+  </div>
+  
