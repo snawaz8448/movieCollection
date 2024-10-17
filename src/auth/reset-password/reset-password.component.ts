@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatError, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -16,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 export class ResetPasswordComponent {
   resetPasswordForm!:FormGroup
 
-  constructor( private fb:FormBuilder){
+  constructor( private fb:FormBuilder ,  private authService:AuthService){
     this.resetPasswordForm=this.fb.group({
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
@@ -26,9 +27,10 @@ export class ResetPasswordComponent {
 
   onSubmit() {
     if (this.resetPasswordForm.valid) {
-      console.log(this.resetPasswordForm.value);
-      // Handle form submission logic here
-    }
+      this.authService.ResetPassword(this.resetPasswordForm.value).subscribe((response:any) => {
+
+    })
+  }
   }
 
   

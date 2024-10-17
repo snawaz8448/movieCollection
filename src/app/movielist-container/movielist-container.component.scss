@@ -1,0 +1,111 @@
+   /* Global styles */
+   body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #fff; /* Light text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+}
+
+p.h1,h2,h3 {
+    margin: 0px !important;
+    padding: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+
+.main{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+/* Card container */
+.movie-card {
+    background-color: #1e1e1e; /* Card background */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Crop overflow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    width: 150px; /* Fixed width */
+    position: relative; /* Position for overlay */
+}
+
+/* Image styles */
+.movie-card img {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove bottom space */
+}
+
+/* Card content styles */
+.movie-info {
+    padding: 5px; /* Inner padding */
+    margin-bottom: 5px;
+
+}
+
+/* Movie title styles */
+.movie-title {
+    font-size:14px !important; /* Title size */
+    margin: 0; /* Remove margin */
+    color: #f9c74f; /* Title color */
+}
+
+/* Movie description styles */
+.movie-description {
+    font-size: 0.9rem; /* Description size */
+    color: #ccc; /* Description color */
+}
+
+/* Hover effect */
+.movie-card:hover {
+    transform: translateY(-10px); /* Lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Shadow effect */
+}
+
+/* Overlay effect */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s; /* Smooth transition */
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    align-items: center;
+    color: #f9c74f; /* Overlay text color */
+    font-size: 1.2rem; /* Overlay text size */
+    padding-bottom: 30%;
+
+    p{
+        margin-bottom: 0px !important;
+        line-height: 1 !important;
+    }
+}
+
+/* Show overlay on hover */
+.movie-card:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .movie-card {
+        width: 100%; /* Full width on small screens */
+        max-width: 200px; /* Max width for larger screens */
+    }
+}
+img{
+    height: 200px !important;
+}

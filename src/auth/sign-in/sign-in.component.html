@@ -1,7 +1,9 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="w-full max-w-md px-11 py-7 bg-white rounded-lg shadow-lg">
-        <h2 class="text-3xl font-bold text-center text-gray-800 mb-5">Sign In</h2>
-        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+<div class=" min-h-screen row" style="overflow:hidden !important; height: 100vh; width: 100vw; ">
+    <div class="w-full max-w-md px-11 py-7  col-lg-6 col-sm-12  flex justify-center items-center " style="height:100vh;">
+        <div class="form shadow-md" style="width: 50%; padding: 3rem;">
+
+        <h2 class="text-3xl font-bold text-center  mb-5">Sign In</h2>
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" >
             <div class="row mb-4">
                 <span class="col-4 ">Email:</span>
                 <div class="col-8">
@@ -37,4 +39,42 @@
                     class="text-blue-600 hover:underline">Sign Up</a></p>
         </div>
     </div>
+
+    </div>
+    <div class="w-full max-w-md px-11 py-7  col-lg-6 col-sm-12 flex justify-center items-center flex-col"  style="height:100vh;background: linear-gradient(45deg, #000000, #4e0063);" >
+        <h2 class="text-[gold] mt-3" >Welcome to Our Service *</h2>
+        <p  class="text-[gold]" >Explore the best offers and deals, only for you!</p>
+
+        <!-- Right: Advertisement Billboard Section -->
+    <div class="advertisement-section">
+        <div class="carousel">
+          <div class="slides">
+            <div class="slide slide1" style="background-image: url('https://www.shutterstock.com/image-photo/top-view-movie-clapper-board-260nw-744018514.jpg');" >
+              <img src="https://www.shutterstock.com/image-photo/top-view-movie-clapper-board-260nw-744018514.jpg" alt="" style="height: 100% ; width: 100%;">
+              <!-- <img src="https://thumbs.dreamstime.com/b/white-wooden-table-top-background-yellow-old-brick-spotlight-effect-wall-can-be-used-display-montage-your-137314095.jpg" alt="" style="height: 100% ; width: 100%;"> -->
+            </div>
+            <div class="slide slide2">
+              <img src="https://www.shutterstock.com/image-photo/relaxed-beautiful-young-woman-orange-260nw-1202685475.jpg" alt="" style="height: 100%; width: 100%;">
+            </div>
+            <div class="slide slide3">
+              <img src="https://www.shutterstock.com/image-photo/full-length-photo-lady-using-260nw-2186015747.jpg" alt="" style="height: 100%; width: 100%;">
+  
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+        <!-- Footer for the billboard -->
+        <div class="footer">
+            <p>Sponsored by:Movies Collections</p>
+            <div class="social-media">
+              <a href="#"><i class="fab fa-facebook-f" ></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>Contact us: shahnawaz786.iimt&#64;gmail.com | +91-8448615225</p>
+          </div>
+    </div> 
 </div>

@@ -22,13 +22,24 @@ import { AuthService } from '../auth.service';
 export class SignInComponent {
 
   signInForm: FormGroup;
-
+   slides = document.querySelector('.slides') as HTMLElement;
+   currentIndex = 0;
   constructor(private fb: FormBuilder, private authService:AuthService) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
+
+
+  ngAfterViewInit(){
+    setInterval(() => {
+      this.currentIndex = (this.currentIndex + 1) % 3;
+      const slides = document.querySelector('.slides') as HTMLElement;
+      slides.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+    }, 2000);
+  }
+
 
 
   onSubmit() {

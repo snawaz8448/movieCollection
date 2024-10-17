@@ -1,0 +1,31 @@
+<div class="main">
+    <!-- Search Bar Container -->
+    <div class="billboard">
+        @for(movie of movies ;let first=$first;track $index ){
+        <div class="movie-card"
+            [ngStyle]="{'background-image': 'url(' + movie.poster + ')'}">
+            <h3>{{ movie.title }}</h3>
+            <p style="color: rgb(255, 204, 0);">{{ movie.description }}</p>
+            <button class="watch-now-btn">Watch Now</button>
+        </div>
+      }
+    </div>
+
+<div class="" style="width: 100%;">
+    <app-latest-movies></app-latest-movies>
+</div>
+<div class="" style="width: 100%;">
+    <app-latest-serial></app-latest-serial>
+</div>
+<div class="" style="width: 100%;">
+    <app-popular-show></app-popular-show>
+</div>
+<div class="" style="width: 100%;">
+    <app-upcoming></app-upcoming>
+</div>
+
+
+    <div class="movie-list mt-3 w-full ">
+        <app-movielist-container></app-movielist-container>
+    </div>
+</div>

@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatError, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -15,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 export class ForgotPasswordComponent {
   forgotPasswordForm!:FormGroup;
 
-  constructor( private fb:FormBuilder){
+  constructor( private fb:FormBuilder , private authService:AuthService){
 
     this.forgotPasswordForm= this.fb.group({
       email:['', [Validators.required, Validators.email]],
@@ -24,8 +25,11 @@ export class ForgotPasswordComponent {
 
   onSubmit() {
     if (this.forgotPasswordForm.valid) {
-      console.log(this.forgotPasswordForm.value);
-      // Handle form submission logic here
+      this.authService.ForgotPassword(this.forgotPasswordForm.value).subscribe((res:any) => {
+        console.log(res);
+      })
+
+
     }
   }
 
