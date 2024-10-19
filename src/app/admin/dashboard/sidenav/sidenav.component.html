@@ -8,30 +8,44 @@
             style="height: calc(100% - 100px); color: white; font-size: 1rem;">
 
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
-                <i class="fa-regular fa-user"></i>
+                <button [routerLink]="['/dashboard/overview/profile']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >
+                    <i class="fa-regular fa-user"></i>
+                </button>
             </div>
 
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <button [routerLink]="['/dashboard/overview/search']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </div>
 
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
-                <i class="fa-solid fa-house"></i>
+                <button [routerLink]="['/dashboard/overview/home']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa-solid fa-house"></i>
+                </button>
             </div>
 
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
-                <i class="fa-solid fa-tv"></i>
+                <button [routerLink]="['/dashboard/overview/tv']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa-solid fa-tv"></i>
+                </button>
             </div>
 
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
-                <i class="fa-solid fa-film"></i>
+                <button [routerLink]="['/dashboard/overview/movies']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa-solid fa-film"></i>
+                </button>
             </div>
 
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
-                <i class="fa-solid fa-volleyball"></i>
+                <button [routerLink]="['/dashboard/overview/sports']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa-solid fa-volleyball"></i>
+                </button>
             </div>
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
-                <i class="fa-solid fa-list"></i>
+                <button [routerLink]="['/dashboard/overview/list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa-solid fa-list"></i>
+                </button>
             </div>
         </div>
 

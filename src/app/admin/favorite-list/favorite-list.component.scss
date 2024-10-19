@@ -1,0 +1,78 @@
+.movie-list {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .movie-details {
+    flex-grow: 1;
+  }
+  
+  mat-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+  }
+  
+  mat-list-item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .movie-title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .custom-card {
+    border: 1px solid rgb(179, 0, 255); /* Border for card */
+    padding: 5px;
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* Clip the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transition: transform 0.2s; /* Smooth hover effect */
+    max-width: 300px; /* Maximum width of the card */
+  }
+  
+  .custom-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+  }
+  
+  .custom-card-image {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .custom-card-content {
+    padding: 3px; /* Padding inside the card */
+    
+  }
+  
+  .custom-card-title {
+    font-size: 1.5em; /* Title size */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .custom-card-description {
+    font-size: 12px; /* Description size */
+  }
+  
+  .custom-card-button {
+    display: inline-block; /* Display as a block */
+    padding:0px 5px; /* Padding for button */
+    color: rgb(235, 58, 255) !important;
+    border: 1px solid rgb(235, 58, 255) ; /* Remove border */
+    border-radius: 5px; /* Rounded button */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    font-size: 12px
+  }
+  
+  .custom-card-button:hover {
+    background-color:  rgba(235, 58, 255, 0.174) ; /* Darker color on hover */
+  }
+  
