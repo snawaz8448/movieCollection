@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -92,3 +93,26 @@ mat-form-field{
   background-color: #000000; /* Change the color as needed */
 }
   // ------------scrollbar end------------// 
+
+  .activity-dialog{
+    margin: 0px !important;
+    padding: 15px !important;
+  }
+
+
+  .mat-expansion-panel-header-description{
+    flex-grow: 0 !important;
+  }
+
+  
+  .mat-expansion-panel {
+    background: linear-gradient(45deg, #000000, #3e004f) !important;
+    }
+    .mat-expansion-panel-header-title{
+      color: white !important;
+    }
+    .mat-expansion-panel-body{
+      // padding: 0px 1px 10px !important;
+      color: rgb(235, 58, 255) !important;
+
+    }

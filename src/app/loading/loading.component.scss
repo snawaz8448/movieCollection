@@ -1,0 +1,51 @@
+body{
+    background-color: black;
+}
+.loaders-container {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0;
+    
+    .container {
+      position: relative;
+      display: inline-block;
+      box-sizing: border-box;
+    }
+  }
+  
+
+  .wave {
+    margin-top: 15px;
+    float: left;
+    width: 18px;
+    height: 40px;
+    box-sizing: border-box;
+    border: 2px solid rgb(234, 0, 255);;
+    margin-left: -2px;
+    animation: slide 0.6s infinite linear;
+    
+    &:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;  
+    }
+  
+    &:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    
+    &:nth-child(2n+1) {
+      animation-delay: 0.2s;
+    }
+  }
+  
+  
+  @keyframes slide {
+    50% {
+      margin-top: 25px;
+    }
+  }
+  
+
+
+  

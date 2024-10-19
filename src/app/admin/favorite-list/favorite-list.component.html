@@ -1,0 +1,33 @@
+   <div class="movie-list">
+    <h4>Favorite Movies</h4>
+    <mat-accordion>
+        @for (movie of movies; track $index) {
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span>{{ movie.title }} ({{ movie.year }})</span>
+          </mat-panel-title>
+          <mat-panel-description>
+            <button mat-icon-button (click)="toggleFavorite(movie)">
+              <mat-icon *ngIf="movie.isFavorite">favorite</mat-icon>
+              <mat-icon *ngIf="!movie.isFavorite">favorite_border</mat-icon>
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+          <!-- <p>{{ movie.description }}</p> -->
+          <div class="custom-card">
+            <div class="card-body flex justify-between items-center gap-1">
+                <p class="custom-card-description" style="line-height: 1; margin-bottom: 8px;">{{  movie.description }}</p>
+                <img class="custom-card-image" src="imageUrl" alt="{{ movie.title  }}"  style="height: 2.5rem; width: 2.5rem;"/>
+            </div>
+            <div class="custom-card-content">
+                <button>
+                    <a class="custom-card-button" style="color: white !important;">Watch Now</a>
+                </button>
+            </div>
+          </div>          
+      </mat-expansion-panel>
+    }
+    </mat-accordion>
+  </div>
+  

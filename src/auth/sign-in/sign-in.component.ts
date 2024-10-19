@@ -11,11 +11,12 @@ import { MatError } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { AuthService } from '../auth.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [ HttpClientModule , CommonModule ,ReactiveFormsModule , MatFormFieldModule ,MatCheckboxModule ,MatError ,MatInputModule ,MatButtonModule ],
+  imports: [ HttpClientModule , CommonModule ,ReactiveFormsModule , MatFormFieldModule ,MatCheckboxModule ,MatError ,MatInputModule ,MatButtonModule ,RouterModule ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss'
 })
@@ -24,7 +25,7 @@ export class SignInComponent {
   signInForm: FormGroup;
    slides = document.querySelector('.slides') as HTMLElement;
    currentIndex = 0;
-  constructor(private fb: FormBuilder, private authService:AuthService) {
+  constructor(private fb: FormBuilder, private authService:AuthService , private router:Router) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -47,7 +48,8 @@ export class SignInComponent {
       this.authService.SignIn(this.signInForm.value).subscribe((res:any)=>{
         if (res) {
           localStorage.setItem('authToken' , res?.token)
-        }
+        };
+        this.router.navigate(['/dashboard']);
 
       })
     } else {

@@ -7,11 +7,16 @@ import { MatError, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { AuthService } from '../auth.service';
+import { Router, RouterModule } from '@angular/router';
+import { NotificationService } from '../../app/admin/services/notification.service';
+import { ToastrService, ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [  CommonModule ,ReactiveFormsModule , MatFormFieldModule ,MatCheckboxModule ,MatError ,MatInputModule ,MatButtonModule ,MatSelectModule ],
+  imports: [  CommonModule ,ReactiveFormsModule , MatFormFieldModule ,MatCheckboxModule ,MatError ,MatInputModule ,MatButtonModule ,MatSelectModule ,
+    RouterModule ,
+  ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
@@ -19,7 +24,7 @@ export class SignUpComponent {
   signUpForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder ,  private authService:AuthService) {
+  constructor(private fb: FormBuilder ,  private authService:AuthService , private router:Router , private notificationService:NotificationService) {
     this.signUpForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -36,8 +41,11 @@ export class SignUpComponent {
   onSubmit() {
     if (this.signUpForm.valid) {
       this.authService.SignUp(this.signUpForm.value).subscribe((res:any)=>{
-        localStorage.setItem('authToken' , res?.token)
-      })
+        localStorage.setItem('authToken' , res?.token);
+        this.router.navigate(['/dashboard']);
+     },(error:any)=>{
+      this.notificationService.showError()
+      });
     }
   }
 
