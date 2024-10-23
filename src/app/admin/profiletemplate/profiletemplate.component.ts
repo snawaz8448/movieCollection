@@ -4,6 +4,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatDialog,MAT_DIALOG_DATA,MatDialogRef,MatDialogTitle,MatDialogContent,MatDialogActions,MatDialogClose, } from '@angular/material/dialog';
 import { DialogRef } from '@angular/cdk/dialog';
 import { ActivityComponent } from '../../activity/activity.component';
+import { UpdateProfileComponent } from '../update-profile/update-profile.component';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 @Component({
   selector: 'app-profiletemplate',
   standalone: true,
@@ -21,17 +23,6 @@ export class ProfiletemplateComponent {
 
   }
 
-  openUpdateProfile() {
-    // Navigate to the update profile form
-    this.router.navigate(['/update-profile']);
-  }
-  
-  openChangePassword() {
-    // Navigate to the change password form
-    this.router.navigate(['/change-password']);
-  }
-  
-
     
 SignOut() {
   localStorage.removeItem('authToken');
@@ -45,13 +36,40 @@ favoriteList() {
     height:'100%',
     position: { top: '20px', right: '20px' },
     disableClose: false,
-    data: { message: 'This is the data passed to the dialog!' },
+    data: { message: 'This is the data passed to the dialog!',type:'favorite' },
     panelClass: 'activity-dialog'
   })
 
   }
   watchList() {
-
+    const dialogRef =this.dialog.open(ActivityComponent,{
+      width: '30%',
+      height:'100%',
+      position: { top: '20px', right: '20px' },
+      disableClose: false,
+      data: { message: 'This is the data passed to the dialog!'  , type:'watchlist' },
+      panelClass: 'activity-dialog'
+    })
+  }
+  updateProfile() {
+    const dialogRef =this.dialog.open(UpdateProfileComponent,{
+      width: '30%',
+      height:'auto',
+      position: { top: '30px', right: '0px' },
+      disableClose: false,
+      data: { message: 'This is the data passed to the dialog!'  , type:'watchlist' },
+      panelClass: 'activity-dialog'
+    })
+  }
+  changePassword() {
+    const dialogRef =this.dialog.open(ChangePasswordComponent,{
+      width: '30%',
+      height:'auto',
+      position: { top: '30px', right: '30px' },
+      disableClose: false,
+      data: { message: 'This is the data passed to the dialog!'  , type:'watchlist' },
+      panelClass: 'activity-dialog'
+    })
   }
 
 }

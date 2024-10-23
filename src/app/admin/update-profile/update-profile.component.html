@@ -1,0 +1,30 @@
+<div class="w-full max-w-md px-11 py-3  flex justify-center items-center " style="height:auto;;">
+    <div class="form " style="width: 100%; ">
+        <h2 class="text-2xl font-bold text-center  mb-3">Update Profile</h2>
+        <form [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
+            <div class="row mb-3">
+                <span class="col-4 ">Name:</span>
+                <div class="col-8">
+                    <mat-form-field appearance="outline" class="w-full">
+                        <input matInput formControlName="name" placeholder="Enter your name" required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <span class="col-4 ">Email:</span>
+                <div class="col-8">
+                    <mat-form-field appearance="outline" class="w-full">
+                        <input matInput formControlName="email" placeholder="Enter your email" required>
+                    </mat-form-field>
+                </div>
+            </div>
+        
+            <div class="flex items-center justify-center mb-3">
+                <button mat-raised-button color="primary" class="w-full" type="submit"
+                    [disabled]="updateProfileForm.invalid">
+                    Update Profile
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

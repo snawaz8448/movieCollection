@@ -78,7 +78,6 @@ mat-form-field{
 }
 
 //****** ------------scrollbar start------------// *******
-
 ::-webkit-scrollbar {
   width: 6px; 
   height: 6px; 
@@ -97,6 +96,7 @@ mat-form-field{
   .activity-dialog{
     margin: 0px !important;
     padding: 15px !important;
+    min-width: 28c0px !important;
   }
 
 
@@ -114,5 +114,4 @@ mat-form-field{
     .mat-expansion-panel-body{
       // padding: 0px 1px 10px !important;
       color: rgb(235, 58, 255) !important;
-
     }

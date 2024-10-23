@@ -44,7 +44,7 @@ export class SignUpComponent {
         localStorage.setItem('authToken' , res?.token);
         this.router.navigate(['/dashboard']);
      },(error:any)=>{
-      this.notificationService.showError()
+      this.notificationService.showError(error?.message , 'Error')
       });
     }
   }
