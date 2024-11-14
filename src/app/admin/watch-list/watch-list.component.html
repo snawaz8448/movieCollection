@@ -1,4 +1,5 @@
 <div class="movie-list">
+  <p><button style="float: right;" (click)="closeDialog()"><i class="fa-solid fa-xmark" ></i></button></p>
     <h4>Recent Watched Movies</h4>
     <mat-accordion>
         @for (movie of movies; track $index) {

@@ -1,4 +1,5 @@
    <div class="movie-list">
+    <p><button style="float: right;" (click)="closeDialog()"><i class="fa-solid fa-xmark" ></i></button></p>
     <h4>Favorite Movies</h4>
     <mat-accordion>
         @for (movie of movies; track $index) {
@@ -7,12 +8,6 @@
           <mat-panel-title>
             <span>{{ movie.title }} ({{ movie.year }})</span>
           </mat-panel-title>
-          <mat-panel-description>
-            <button mat-icon-button (click)="toggleFavorite(movie)">
-              <mat-icon *ngIf="movie.isFavorite">favorite</mat-icon>
-              <mat-icon *ngIf="!movie.isFavorite">favorite_border</mat-icon>
-            </button>
-          </mat-panel-description>
         </mat-expansion-panel-header>
           <!-- <p>{{ movie.description }}</p> -->
           <div class="custom-card">

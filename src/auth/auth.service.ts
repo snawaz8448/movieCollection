@@ -32,11 +32,13 @@ header = new HttpHeaders();
   }
    // UpdatePassword method returning an Observable   
    UpdatePassword(data: any): Observable<any> {
+    debugger
     return this.http.post<any>(BaseUrl+'/auth/updatePassword', data);
   }
    // UpdateProfile method returning an Observable   
    UpdateProfile(data: any): Observable<any> {
-    return this.http.post<any>(BaseUrl+'/auth/updateProfile', data);
+    debugger
+    return this.http.patch<any>('https://novies.vercel.app/api/v1/user/updateProfile', data);
   }
    // DeleteUser method returning an Observable   
    DeleteUser(data: any): Observable<any> {

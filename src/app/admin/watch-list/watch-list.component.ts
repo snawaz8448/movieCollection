@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -12,6 +13,10 @@ import { MatListModule } from '@angular/material/list';
 })
 export class WatchListComponent {
 
+  constructor( public dialogRef: MatDialogRef<WatchListComponent>,
+    @Inject(MAT_DIALOG_DATA )public data: any){
+
+  }
 
   movies: Movie[] = [
     { id: 1, title: 'Inception', year: 2010, description: 'A thief who steals corporate secrets...', isFavorite: false },
@@ -28,6 +33,11 @@ export class WatchListComponent {
     movie.isFavorite = !movie.isFavorite;
   }
 
+
+  
+  closeDialog(){
+    this.dialogRef.close();
+  }
 }
 
 interface Movie {

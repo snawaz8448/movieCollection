@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -8,13 +8,15 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
 import { NotificationService } from '../services/notification.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-change-password',
   standalone: true,
-  imports: [   CommonModule ,ReactiveFormsModule , MatFormFieldModule ,MatCheckboxModule ,MatError ,MatInputModule ,MatButtonModule ,RouterModule ],
   templateUrl: './change-password.component.html',
-  styleUrl: './change-password.component.scss'
+  styleUrl: './change-password.component.scss',
+  imports: [ CommonModule, ReactiveFormsModule , MatFormFieldModule ,MatCheckboxModule  ,MatInputModule ,MatButtonModule ,RouterModule]
+
 })
 export class ChangePasswordComponent {
 
@@ -22,7 +24,9 @@ export class ChangePasswordComponent {
 
   constructor(private fb:FormBuilder ,
     private authService:AuthService ,
-    private notificationService:NotificationService ){
+    private notificationService:NotificationService ,
+    public dialogRef: MatDialogRef<ChangePasswordComponent>,
+    @Inject(MAT_DIALOG_DATA )public data: any){
 
     this.changePasswordForm = this.fb.group({
       oldpassword: ['', Validators.required] , // Correct syntax for form control
@@ -34,24 +38,32 @@ export class ChangePasswordComponent {
 
 
   onSubmit(){
+    debugger
     if(this.changePasswordForm.valid  && (this.changePasswordForm.get('newpassword')?.value == this.changePasswordForm.get('confirmpassword')?.value)){
       let postData ={
-        oldpassword:this.changePasswordForm.get('oldpassword')?.value ,
+        currentPassword:this.changePasswordForm.get('oldpassword')?.value ,
         password:this.changePasswordForm.get('newpassword')?.value ,
+        confirmPassword:this.changePasswordForm.get('confirmpassword')?.value ,
       }
       this.authService.UpdatePassword(postData).subscribe(
         (res:any)=>{
         console.log(res);
+        this.dialogRef.close()
         this.notificationService.showSuccess('Password changed successfully' , 'Sucess');
       },
       (error)=>{
         console.log(error);
+        this.dialogRef.close()
         this.notificationService.showError(error?.message, 'Error');
       }
     )
     }
   }
 
+
+  closeDialog(){
+    this.dialogRef.close();
+  }
 
 
 }

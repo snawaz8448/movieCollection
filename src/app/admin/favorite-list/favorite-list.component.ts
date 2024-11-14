@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-favorite-list',
@@ -11,6 +12,12 @@ import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
   styleUrl: './favorite-list.component.scss'
 })
 export class FavoriteListComponent {
+
+  
+  constructor( public dialogRef: MatDialogRef<FavoriteListComponent>,
+    @Inject(MAT_DIALOG_DATA )public data: any){
+
+  }
 
   movies: Movie[] = [
     { id: 1, title: 'Inception', year: 2010, description: 'A thief who steals corporate secrets...', isFavorite: false },
@@ -26,6 +33,13 @@ export class FavoriteListComponent {
   toggleFavorite(movie: Movie) {
     movie.isFavorite = !movie.isFavorite;
   }
+
+
+  closeDialog(){
+    this.dialogRef.close();
+  }
+
+
 
 }
 
