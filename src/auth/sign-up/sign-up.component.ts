@@ -10,28 +10,29 @@ import { AuthService } from '../auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { NotificationService } from '../../app/admin/services/notification.service';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
+import { LoadingComponent } from "../../app/loading/loading.component";
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [  CommonModule ,ReactiveFormsModule , MatFormFieldModule ,MatCheckboxModule ,MatError ,MatInputModule ,MatButtonModule ,MatSelectModule ,
-    RouterModule ,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatCheckboxModule, MatError, MatInputModule, MatButtonModule, MatSelectModule,
+    RouterModule, LoadingComponent],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent {
   signUpForm: FormGroup;
+  isSignupLoading:boolean=false;
 
 
   constructor(private fb: FormBuilder ,  private authService:AuthService , private router:Router , private notificationService:NotificationService) {
     this.signUpForm = this.fb.group({
       name: ['', Validators.required],
+      photo: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
       role: ['', Validators.required],
-      // photo: [null, Validators.required] // You can handle photo upload differently if needed
     });
   }
 
@@ -39,13 +40,22 @@ export class SignUpComponent {
   }
 
   onSubmit() {
+  
     if (this.signUpForm.valid) {
+      this.isSignupLoading=true
       this.authService.SignUp(this.signUpForm.value).subscribe((res:any)=>{
+        debugger
         localStorage.setItem('authToken' , res?.token);
         this.router.navigate(['/dashboard']);
      },(error:any)=>{
-      this.notificationService.showError(error?.message , 'Error')
+      debugger
+      this.isSignupLoading=false
+      this.notificationService.showError(error?.error?.message , 'Error')
       });
+    }
+    else{
+      this.isSignupLoading=false
+      this.notificationService.showError('Invalid Form , Please fill again' , 'Error')
     }
   }
 

@@ -38,7 +38,7 @@ export class ChangePasswordComponent {
 
 
   onSubmit(){
-    debugger
+  
     if(this.changePasswordForm.valid  && (this.changePasswordForm.get('newpassword')?.value == this.changePasswordForm.get('confirmpassword')?.value)){
       let postData ={
         currentPassword:this.changePasswordForm.get('oldpassword')?.value ,

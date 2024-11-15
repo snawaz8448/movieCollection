@@ -1,4 +1,10 @@
-   <div class="movie-list">
+@if (isFavoriteMovieLoading) {
+  <div class="loader" style="height: 100%; width: 100%; position: absolute; top: 0px; z-index: 10; background-color: rgb(255, 255, 255)">
+    <app-loading></app-loading>
+  </div>
+}
+  
+  <div class="movie-list" style="position: relative;">
     <p><button style="float: right;" (click)="closeDialog()"><i class="fa-solid fa-xmark" ></i></button></p>
     <h4>Favorite Movies</h4>
     <mat-accordion>

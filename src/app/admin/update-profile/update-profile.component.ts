@@ -9,11 +9,12 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
 import { NotificationService } from '../services/notification.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { LoaderComponent } from "../../loader/loader.component";
 
 @Component({
   selector: 'app-update-profile',
   standalone: true,
-  imports: [   CommonModule ,ReactiveFormsModule , MatFormFieldModule ,MatCheckboxModule  ,MatInputModule ,MatButtonModule ,RouterModule ],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatCheckboxModule, MatInputModule, MatButtonModule, RouterModule, LoaderComponent],
   templateUrl: './update-profile.component.html',
   styleUrl: './update-profile.component.scss'
 })
@@ -21,6 +22,7 @@ export class UpdateProfileComponent {
 
 
   updateProfileForm!:FormGroup;
+  isUpdatingProfile:boolean=false
 
   constructor(private fb:FormBuilder ,
     private authService:AuthService ,
@@ -38,19 +40,21 @@ export class UpdateProfileComponent {
 
   onSubmit(){
     if(this.updateProfileForm.valid ){
-      debugger
+      this.isUpdatingProfile=true
       let postData ={
         name:this.updateProfileForm.get('name')?.value ,
         email:this.updateProfileForm.get('email')?.value ,
       }
       this.authService.UpdateProfile(postData).subscribe(
         (res:any)=>{
+          this.isUpdatingProfile=false;
         console.log(res);
         this.dialogRef.close();
         this.notificationService.showSuccess(' Update Profile successfully' , 'Sucess');
       },
       (error:any)=>{
         console.log(error);
+        this.isUpdatingProfile=false;
         this.dialogRef.close();
         this.notificationService.showError(error?.message, 'Error');
       }

@@ -5,8 +5,15 @@
         <button class="search-btn" style="float: right;">
             <i class="fas fa-search"></i>
         </button>
-    </div>
+<!-- <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/Tnk3C2BZwLo" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe> -->
+
+        </div>
     <div class="movie-list mt-3 w-full " >
-        <app-movielist-container></app-movielist-container>
+        <app-movielist-container [isMovieLoaded]="isMovieLoaded"></app-movielist-container>
     </div>
 </div>

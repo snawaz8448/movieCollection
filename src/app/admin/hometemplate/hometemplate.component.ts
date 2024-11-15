@@ -5,6 +5,7 @@ import { LatestMoviesComponent } from "../latest-movies/latest-movies.component"
 import { LatestSerialComponent } from "../latest-serial/latest-serial.component";
 import { PopularShowComponent } from "../popular-show/popular-show.component";
 import { UpcomingComponent } from "../upcoming/upcoming.component";
+import { MoviesService } from '../services/movies.service';
 
 @Component({
   selector: 'app-hometemplate',
@@ -14,6 +15,20 @@ import { UpcomingComponent } from "../upcoming/upcoming.component";
   styleUrl: './hometemplate.component.scss'
 })
 export class HometemplateComponent {
+    isMovieLoaded:boolean=false;
+
+
+    constructor(private movieService:MoviesService){
+        this.getAllMovie();
+    }
+
+    getAllMovie(){
+     this.movieService.getAllMovies().subscribe((data:any) => {
+        this.isMovieLoaded=true
+       console.log(data)
+    })}
+ 
+
   movies = [
     {
       title: "Inception",

@@ -109,3 +109,9 @@ p.h1,h2,h3 {
 img{
     height: 200px !important;
 }
+
+
+.mat-mdc-button:not(:disabled) {
+    color: #64e60c;
+    border: 1px solid lightgreen;
+}

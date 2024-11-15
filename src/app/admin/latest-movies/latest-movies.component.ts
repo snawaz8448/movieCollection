@@ -1,4 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { WatchmovieDialogComponent } from '../../watchmovie-dialog/watchmovie-dialog.component';
+import { MoviesService } from '../services/movies.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-latest-movies',
@@ -13,6 +16,8 @@ export class LatestMoviesComponent {
 
 
   @ViewChild('latest', { static: true }) latest!: ElementRef;
+
+  constructor(public dialog: MatDialog ,private movieService:MoviesService){}
 
   scrollLeft() {
     this.latest.nativeElement.scrollBy({ left: -600, behavior: 'smooth' });
@@ -194,6 +199,20 @@ export class LatestMoviesComponent {
         description: "Three former parapsychology professors set up shop as a ghost removal service."
     }
   ]
+
+  openWatchMovieDialog(){
+    const dialogRef = this.dialog.open(WatchmovieDialogComponent, {
+        data: {name: 'dialod'},
+        width: '50vw', // Set the width
+        height: '70vh', // Set the height
+        minWidth:'600px',
+        panelClass: 'mat-resize-dialog-container',
+        disableClose: true 
+      });
+      dialogRef.afterClosed().subscribe((result:any) => {
+        console.log('The dialog was closed');
+      });
+    }
 
 
 

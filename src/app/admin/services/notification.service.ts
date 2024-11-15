@@ -19,7 +19,7 @@ export class NotificationService {
   }
 
   showError(message: string | undefined, title: string | undefined ): void {
-    debugger
+    
     this.toastr.error(message, title,{
       tapToDismiss: true,
       progressBar: true,

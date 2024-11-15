@@ -1,5 +1,5 @@
 import { HttpClient ,HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BaseUrl } from '../../helper/contant';
 
 @Injectable({
@@ -9,6 +9,7 @@ export class MoviesService {
   header = new HttpHeaders();
 
   constructor(private http:HttpClient) { }
+  private movieEventEmitter = new EventEmitter<boolean>();
 
 
 
@@ -21,6 +22,17 @@ export class MoviesService {
       url = BaseUrl + '/movies';
       }
     return this.http.get(url)
-
   }
+
+
+   // Method to get the emitter observable to subscribe
+   getMovieEventEmitter() {
+    return this.movieEventEmitter;
+  }
+  // Method to emit event
+  emitMovieEvent(data:boolean) {
+    debugger
+    this.movieEventEmitter.emit(data);
+  }
+
 }
