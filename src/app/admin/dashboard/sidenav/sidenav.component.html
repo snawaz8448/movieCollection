@@ -14,7 +14,7 @@
             </div>
 
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
-                <button [routerLink]="['/dashboard/overview/search']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                <button [routerLink]="['/dashboard/overview/search']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="getAllMovie()">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>

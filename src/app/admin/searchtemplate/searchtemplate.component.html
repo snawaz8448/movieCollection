@@ -1,7 +1,7 @@
 <div class="main" style="width: 100%; height: 100%;">
     <!-- Search Bar Container -->
     <div class="search-container flex justify-end w-full">
-        <input type="text" class="search-input" placeholder="Search movies..." />
+        <input type="text" class="search-input" placeholder="Search movies..." [formControl]="searchMovieinput" />
         <button class="search-btn" style="float: right;">
             <i class="fas fa-search"></i>
         </button>
