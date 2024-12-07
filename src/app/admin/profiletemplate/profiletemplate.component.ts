@@ -14,8 +14,13 @@ import { ChangePasswordComponent } from '../change-password/change-password.comp
   styleUrl: './profiletemplate.component.scss'
 })
 export class ProfiletemplateComponent {
+  currentUser:any
 
 
+ngOnInit(){
+  const authuser: any = localStorage.getItem('currentUser');
+  this.currentUser = JSON.parse(authuser) || null;
+}
 
 
 
@@ -36,7 +41,7 @@ favoriteList() {
     height:'100%',
     position: { top: '20px', right: '20px' },
     disableClose: false,
-    data: { message: 'This is the data passed to the dialog!',type:'favorite' },
+    data: { type:'favorite' , currentUser:this.currentUser},
     panelClass: 'activity-dialog'
   })
 
@@ -47,7 +52,7 @@ favoriteList() {
       height:'100%',
       position: { top: '20px', right: '20px' },
       disableClose: false,
-      data: { message: 'This is the data passed to the dialog!'  , type:'watchlist' },
+      data: { type:'watchlist'  ,currentUser:this.currentUser},
       panelClass: 'activity-dialog'
     })
   }

@@ -1,9 +1,12 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input, input } from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoadingComponent } from "../../loading/loading.component";
+import { MoviesService } from '../services/movies.service';
+import { NotificationService } from '../services/notification.service';
+import { WatchmovieDialogComponent } from '../../watchmovie-dialog/watchmovie-dialog.component';
 
 @Component({
   selector: 'app-favorite-list',
@@ -14,25 +17,23 @@ import { LoadingComponent } from "../../loading/loading.component";
 })
 export class FavoriteListComponent {
 
+  @Input() currentUser:any
   
   constructor( public dialogRef: MatDialogRef<FavoriteListComponent>,
-    @Inject(MAT_DIALOG_DATA )public data: any){
+    @Inject(MAT_DIALOG_DATA )public data: any,
+    private movieService:MoviesService,
+    private notificationServive:NotificationService,
+    public dialog: MatDialog
+  ){
 
   }
   isFavoriteMovieLoading:boolean=false
-  movies: Movie[] = [
-    { id: 1, title: 'Inception', year: 2010, description: 'A thief who steals corporate secrets...', isFavorite: false },
-    { id: 2, title: 'Interstellar', year: 2014, description: 'A team of explorers travel through a wormhole...', isFavorite: false },
-    { id: 3, title: 'The Dark Knight', year: 2008, description: 'When the menace known as the Joker emerges...', isFavorite: false },
-    // Add more movies as needed
-  ];
+  movies: any[] = [ ]
 
 
   ngOnInit(){
     this.isFavoriteMovieLoading=true;
-    setTimeout(() => {
-      this.isFavoriteMovieLoading=false
-    }, 3000);
+      this.getFavoriteMovieList();
 
   }
 
@@ -49,6 +50,36 @@ export class FavoriteListComponent {
     this.dialogRef.close();
   }
 
+
+  getFavoriteMovieList() {
+    this.movieService.getFavoriteMovies(this.currentUser._id).subscribe(
+      (res: any) => {
+        this.isFavoriteMovieLoading=false;
+        this.movies=res.data.favoritemovies;
+        console.log(res);
+      },
+      (error: any) => {  // Corrected this part
+        this.isFavoriteMovieLoading=false;
+        this.notificationServive.showError(error?.error?.message, 'Error');
+      }
+    );
+  }
+  
+
+  watchNow(url:string , description:string  , id:any){
+    this.dialogRef.close();
+    const dialogRef = this.dialog.open(WatchmovieDialogComponent, {
+      width: '50vw', 
+      height: '70vh', 
+      data:{url:url , description:description , id:id},
+      minWidth:'600px',
+      panelClass: 'mat-resize-dialog-container',
+      disableClose: true 
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
 
 }

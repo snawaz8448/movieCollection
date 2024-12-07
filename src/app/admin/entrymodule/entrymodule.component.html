@@ -1,0 +1,177 @@
+<div class="main" style="max-height: 100vh;min-height: 60vh; width: 100%; background-color: rgb(228, 228, 228); overflow-y: scroll;">
+    @if (isMovieUploading) {
+        <div class="loader" style="height: 100%; width: 100%; position: absolute; top: 0px; z-index: 10; background-color:rgb(0 0 0 / 70%) ;display: flex; justify-content: center; align-items: center;">
+          <div style="height: 150px; width: 150px;     background-color: #fb00ff14;
+          border-radius: 30px; padding-bottom: 20px;" >
+            <app-loading></app-loading>
+          </div>
+        </div>
+      }
+
+    <div class="row">
+        <div class="form  " style="width: 100%; padding: 3rem;">
+
+            <h2 class="text-3xl font-bold text-center  mb-3">Movies Entries</h2>
+            <form [formGroup]="EntryMovieInForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Name:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="name" placeholder="Enter Movie Name" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Description:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="description" placeholder="Enter description" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Movie:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="movieurl" placeholder="Enter movie ur" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Category:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <mat-select matInput formControlName="category" placeholder="Select category" required>
+                                    <mat-option value="bollywood">Bollywood</mat-option>
+                                    <mat-option value="south">South Movie</mat-option>
+                                    <mat-option value="serial">Serial</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Sub-Category:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <mat-select matInput formControlName="subCategory" placeholder="Select sub-category" required>
+                                    <mat-option value="action movies">Action Movie</mat-option>
+                                    <mat-option value="popular show">Popular Show</mat-option>
+                                    <mat-option value="upcoming show">Upcoming Show</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Cover Image:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="coverImage" placeholder="coverImage Url" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Actors:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="actors" placeholder="Enter actors name" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Directors:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="directors" placeholder="Enter directors name" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Genres:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="generes" placeholder="Enter generes name" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Release Year:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="releaseyear" placeholder="Enter releaseyear" type="number">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Release Date:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="releasedate" placeholder="Enter Release Date" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Rating:</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="rating" placeholder="Enter Rating " type="number">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Duration :</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="duration" placeholder="Enter Duration"  type="number">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="row mb-3">
+                        <span class="col-12 col-sm-4 ">Price :</span>
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <input matInput formControlName="price" placeholder="Enter price"  type="number">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-end mb-4">
+                <button mat-raised-button color="primary" class="w-30" type="submit">
+                    Add Movie
+                </button>
+            </div>
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -12,17 +12,17 @@
       <mat-expansion-panel >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <span>{{ movie.title }} ({{ movie.year }})</span>
+            <span>{{ movie?.name }} ({{ movie?.releaseyear }})</span>
           </mat-panel-title>
         </mat-expansion-panel-header>
           <!-- <p>{{ movie.description }}</p> -->
           <div class="custom-card">
             <div class="card-body flex justify-between items-center gap-1">
                 <p class="custom-card-description" style="line-height: 1; margin-bottom: 8px;">{{  movie.description }}</p>
-                <img class="custom-card-image" src="imageUrl" alt="{{ movie.title  }}"  style="height: 2.5rem; width: 2.5rem;"/>
+                <img class="custom-card-image" [src]="movie?.coverImage" alt="{{ movie.name  }}"  style="height: 2.5rem; width: 2.5rem;"/>
             </div>
             <div class="custom-card-content">
-                <button>
+                <button (click)="watchNow(movie.movieurl , movie.description , movie.id)">
                     <a class="custom-card-button" style="color: white !important;">Watch Now</a>
                 </button>
             </div>

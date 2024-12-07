@@ -61,7 +61,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
   .mdc-notched-outline
   .mdc-notched-outline__trailing {
-  border-color: rgba(163, 253, 52, 0.874) !important;
+  border-color: rgba(102, 185, 0, 0.874) !important;
 }
 
 
@@ -117,3 +117,11 @@ mat-form-field{
     }
 
     
+
+
+    .ytp-pause-overlay{
+      display: none !important;
+    }
+    .ytp-expand-pause-overlay .ytp-pause-overlay {
+      display: none !important;
+    }

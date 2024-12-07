@@ -44,7 +44,11 @@ header = new HttpHeaders();
   }
    // GetAllUser method returning an Observable   
    GetAllUser(): Observable<any> {
-    return this.http.get<any>(BaseUrl+'/auth/getAllUsers');
+    return this.http.get<any>(BaseUrl+'/user/getAllUsers');
+  }
+
+   favoriteMovie(postData:any): Observable<any> {
+    return this.http.patch<any>(BaseUrl+'/user/addfavoriteMovies' ,postData);
   }
 
 }

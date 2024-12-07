@@ -2,12 +2,12 @@
 
     @if(data.type == 'favorite'){
     <div class="fav" style="height: 100%; width: 100%;">
-        <app-favorite-list></app-favorite-list>
+        <app-favorite-list [currentUser]="data.currentUser"></app-favorite-list>
     </div>
     }
     @if(data.type == 'watchlist'){
     <div class="watchlist" style="height: 100%; width: 100%;">
-        <app-favorite-list></app-favorite-list>
+        <app-favorite-list [currentUser]="data.currentUser"></app-favorite-list>
     </div>
     }
 </div>

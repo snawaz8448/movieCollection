@@ -9,6 +9,8 @@ import { HometemplateComponent } from './admin/hometemplate/hometemplate.compone
 import { ProfiletemplateComponent } from './admin/profiletemplate/profiletemplate.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoadingComponent } from './loading/loading.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { EntrymoduleComponent } from './admin/entrymodule/entrymodule.component';
 
 export const routes: Routes = [
     {path:'' , redirectTo:'signup' , pathMatch:"full"},
@@ -21,8 +23,9 @@ export const routes: Routes = [
                     {path:'search' , component:SearchtemplateComponent},
                     {path:'profile' , component:ProfiletemplateComponent},
                     {path:'home' , component:HometemplateComponent},
+                    {path:'users' , component:AllUsersComponent},
+                    {path:'entry' , component:EntrymoduleComponent},
                     {path:'**' , component:PageNotFoundComponent}
-
                 ]
             }
         ]

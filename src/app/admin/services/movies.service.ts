@@ -1,6 +1,7 @@
 import { HttpClient ,HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { BaseUrl } from '../../helper/contant';
+import { Movie } from '../../commonInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,14 @@ export class MoviesService {
 
   constructor(private http:HttpClient) { }
   private movieEventEmitter = new EventEmitter<boolean>();
+   // Method to get the emitter observable to subscribe
+   getMovieEventEmitter() {
+    return this.movieEventEmitter;
+  }
+  // Method to emit event
+  emitMovieEvent(data:boolean) {
+    this.movieEventEmitter.emit(data);
+  }
 
 
 
@@ -24,15 +33,13 @@ export class MoviesService {
     return this.http.get(url)
   }
 
-
-   // Method to get the emitter observable to subscribe
-   getMovieEventEmitter() {
-    return this.movieEventEmitter;
+  getFavoriteMovies(id:string){
+    return this.http.post(BaseUrl+'/user/favoriteMovies' , {id:id})
   }
-  // Method to emit event
-  emitMovieEvent(data:boolean) {
-    debugger
-    this.movieEventEmitter.emit(data);
+
+  addMovies(movie:Movie){
+   
+    return this.http.post(BaseUrl+'/movies' , movie)
   }
 
 }

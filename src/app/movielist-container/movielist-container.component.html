@@ -2,7 +2,7 @@
 
     @if (!isMovieLoaded) {
 
-    @for( item of skeletonMovie ;let first=$first;track $index ){
+    @for( item of skeletonMovie ;let i=$index;track i ){
     <div class="skeleton">
         <app-skeletoncard1></app-skeletoncard1>
     </div>
@@ -10,17 +10,18 @@
     }
 
     @else {
-    @for( item of movies ;let first=$first;track $index ){
+    @for( item of Movies ;let i=$index;track i ){
     <div class="movie-card">
-        <img [src]="item.image" alt="Movie Title">
+        <img [src]="item.coverImage" alt="Movie Title">
         <div class="movie-info">
-            <h2 class="movie-title text-center ">{{item.title}}</h2>
+            <h2 class="movie-title text-center ">{{item.name}}</h2>
         </div>
         <div class="overlay flex justify-end items-center flex-col">
-            <button mat-button (click)="openWatchMovieDialog()">
+            <button mat-button (click)="openWatchMovieDialog(item.movieurl , item.description , item.id)">
                 <p class="text-center">Watch Now</p>
             </button>
-            <p class="movie-description text-center">{{item.description}}</p>
+            <p class="movie-description text-center">{{ item.description.slice(0,80) }}
+            </p>
         </div>
     </div>
     }

@@ -3,6 +3,7 @@ import { MovielistContainerComponent } from "../../movielist-container/movielist
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { MoviesService } from '../services/movies.service';
+import { Movie } from '../../commonInterface';
 
 @Component({
   selector: 'app-searchtemplate',
@@ -15,10 +16,12 @@ export class SearchtemplateComponent {
   searchMovieinput = new FormControl('');
 
   isMovieLoaded:boolean=false;
+  Movies:any[]=[]
   constructor(private movieService:MoviesService , private cd:ChangeDetectorRef){}
 
   ngOnInit(): void {
-    this.searchMovie()
+    this.getAllMovie();
+    this.searchMovie();
   }
 
   searchMovie(){
@@ -28,23 +31,30 @@ export class SearchtemplateComponent {
       distinctUntilChanged(),
       switchMap((name:any) => {
         this.isMovieLoaded=false;
-        return this.movieService.getAllMovies(name)})).subscribe((movies) => {
-        this.isMovieLoaded=true;
-        this.cd.detectChanges();
-        console.log(movies)
+        return this.movieService.getAllMovies(name)})).subscribe((movies:any) => {
+          this.isMovieLoaded=true;
+          this.cd.detectChanges();
+          console.log(movies)
   });
   }
 
 
+  getAllMovie(){
+    this.movieService.getAllMovies().subscribe((data:any) => {
+      this.Movies=data?.data;
+      this.movieService.emitMovieEvent(true )
+      console.log(data)
+   })}
+
 
   extractVideoId(url:string) {
-    const urlParts = url.split('?'); // Split by '?' to separate base URL and query parameters
+    const urlParts = url.split('?'); 
     if (urlParts.length > 1) {
-        const queryParams = urlParts[1].split('&'); // Split query parameters by '&'
+        const queryParams = urlParts[1].split('&');
         for (let param of queryParams) {
-            const keyValue = param.split('='); // Split each parameter into key and value
+            const keyValue = param.split('='); 
             if (keyValue[0] === 'v') {
-                return keyValue[1]; // Return the video ID
+                return keyValue[1]; 
             }
         }
     }
