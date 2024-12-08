@@ -9,37 +9,38 @@
 
 <div class=" min-h-screen row" style="overflow:hidden !important; height: 100vh; width: 100vw; ">
     <div class="w-full max-w-md px-11 py-7  col-lg-6 col-sm-12  flex justify-center items-center " style="height:100vh;">
-        <div class="form shadow-md shadow-[#4e0063] hover:shadow-[#b600e8]" style="width: 50%; padding: 3rem;">
+        <div class="row">
+            <div class="col-12 col-sm-8 form shadow-md shadow-[#4e0063] hover:shadow-[#b600e8]" style="width: 100%; padding: 3rem;">
 
             <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Sign Up</h2>
             <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
                 <div class="row mb-3">
-                    <span class="col-4 ">Name:</span>
-                    <div class="col-8">
+                    <span class="col-12 col-sm-4 ">Name:</span>
+                    <div class="col-12 col-sm-8">
                         <mat-form-field appearance="outline" class="w-full">
                             <input matInput formControlName="name" placeholder="Enter your name" required>
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <span class="col-4 ">Email:</span>
-                    <div class="col-8">
+                    <span class="col-12 col-sm-4 ">Email:</span>
+                    <div class="col-12 col-sm-8">
                         <mat-form-field appearance="outline" class="w-full">
                             <input matInput formControlName="email" placeholder="Enter your email" required>
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <span class="col-4 ">Profile Image:</span>
-                    <div class="col-8">
+                    <span class="col-12 col-sm-4 ">Profile Image:</span>
+                    <div class="col-12 col-sm-8">
                         <mat-form-field appearance="outline" class="w-full">
                             <input matInput formControlName="photo" placeholder="profile image url" required>
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <span class="col-4 ">Password:</span>
-                    <div class="col-8">
+                    <span class="col-12 col-sm-4 ">Password:</span>
+                    <div class="col-12 col-sm-8">
                         <mat-form-field appearance="outline" class="w-full">
                             <input matInput type="password" formControlName="password" placeholder="Enter your password"
                                 required>
@@ -47,8 +48,8 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <span class="col-4 ">Confirm Password:</span>
-                    <div class="col-8">
+                    <span class="col-12 col-sm-4 ">Confirm Password:</span>
+                    <div class="col-12 col-sm-8">
                         <mat-form-field appearance="outline" class="w-full">
                             <input matInput type="password" formControlName="confirmPassword"
                                 placeholder="Confirm your password" required>
@@ -56,13 +57,13 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <span class="col-4 ">Role:</span>
-                    <div class="col-8">
+                    <span class="col-12 col-sm-4 ">Role:</span>
+                    <div class="col-12 col-sm-8">
                         <mat-form-field appearance="outline" class="w-full">
                             <mat-select matInput formControlName="role" placeholder="Select your role" required>
                                 <mat-option value="user">User</mat-option>
                                 <mat-option value="admin">Admin</mat-option>
-                                <mat-option value="editor">Editor</mat-option>
+                                <!-- <mat-option value="editor">Editor</mat-option> -->
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -76,6 +77,7 @@
             </form>
             <div class="mt-4 text-center">
                 <p class="text-sm text-gray-600">Don't have an account? <a [routerLink]="['/signin']" class="text-blue-600 hover:underline">Sign In</a></p>
+            </div>
             </div>
     </div>
 

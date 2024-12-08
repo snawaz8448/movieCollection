@@ -9,21 +9,22 @@
   
 <div class=" min-h-screen row" style="overflow:hidden !important; height: 100vh; width: 100vw; ">
     <div class="w-full max-w-md px-11 py-7  col-lg-6 col-sm-12  flex justify-center items-center " style="height:100vh;">
-        <div class="form shadow-md shadow-[#4e0063] hover:shadow-[#b600e8]" style="width: 50%; padding: 3rem;">
+      <div class="row">
+        <div class="col-12 col-sm-8 form shadow-md shadow-[#4e0063] hover:shadow-[#b600e8]" style="width: 100%; padding: 3rem;">
 
         <h2 class="text-3xl font-bold text-center  mb-5">Sign In</h2>
         <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" >
             <div class="row mb-4">
-                <span class="col-4 ">Email:</span>
-                <div class="col-8">
+              <span class="col-12 col-sm-4 ">Email:</span>
+              <div class="col-12 col-sm-8">
                     <mat-form-field appearance="outline" class="w-full" >
                         <input matInput formControlName="email" placeholder="Enter your email" required>
                     </mat-form-field>
                 </div>
             </div>
             <div class=" row mb-4">
-                <span class="col-4 ">Password:</span>
-                <div class="col-8">
+              <span class="col-12 col-sm-4 ">Password:</span>
+              <div class="col-12 col-sm-8">
                     <mat-form-field appearance="outline" class="w-full" >
                         <input matInput type="password" formControlName="password" placeholder="Enter your password"
                             required>
@@ -47,8 +48,9 @@
             <p class="text-sm text-gray-600">Don't have an account? <a 
                     class="text-blue-600 hover:underline"  [routerLink]="['/signup']" >Sign Up</a></p>
         </div>
-    </div>
-
+   
+        </div>
+      </div>
     </div>
 
 
