@@ -46,6 +46,8 @@ export class SignUpComponent {
       this.authService.SignUp(this.signUpForm.value).subscribe((res:any)=>{
         debugger
         localStorage.setItem('authToken' , res?.token);
+        let user = JSON.stringify(res?.user)
+        localStorage.setItem('currentUser' , user)
         this.router.navigate(['/dashboard']);
      },(error:any)=>{
       debugger

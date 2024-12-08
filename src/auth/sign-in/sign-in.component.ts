@@ -52,7 +52,6 @@ export class SignInComponent {
       this.authService.SignIn(this.signInForm.value).subscribe((res:any)=>{
         this.isSigninLoading=false
         if (res) {
-          debugger
           localStorage.setItem('authToken' , res?.token)
           let user = JSON.stringify(res?.user)
           localStorage.setItem('currentUser' , user)
