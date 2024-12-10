@@ -51,4 +51,13 @@ header = new HttpHeaders();
     return this.http.patch<any>(BaseUrl+'/user/addfavoriteMovies' ,postData);
   }
 
+  UpdateUser(postData:any ,  id:any): Observable<any>{
+    return this.http.patch<any>(BaseUrl+'/user/updateuserAccess/'+id ,postData)
+  };
+
+  GetUserModules(id:any): Observable<any> {
+    return this.http.post<any>(BaseUrl+'/user/GetUserModules' , id);
+  }
+
+
 }

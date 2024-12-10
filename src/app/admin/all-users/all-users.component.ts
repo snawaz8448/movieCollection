@@ -3,6 +3,8 @@ import { AuthService } from '../../../auth/auth.service';
 import { NotificationService } from '../services/notification.service';
 import {MatTableModule} from '@angular/material/table';
 import { LoadingComponent } from "../../loading/loading.component";
+import { MatDialog } from '@angular/material/dialog';
+import { UserDetailDialogComponent } from '../user-detail-dialog/user-detail-dialog.component';
 
 @Component({
   selector: 'app-all-users',
@@ -24,7 +26,8 @@ export class AllUsersComponent {
 
   constructor(
     private authService: AuthService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dialog:MatDialog
   ) {}
 
   ngOnInit() {
@@ -42,6 +45,20 @@ export class AllUsersComponent {
       }
     );
 }
+
+
+onTableClick(user:any){
+  console.log(user);
+  let dialogRef = this.dialog.open(UserDetailDialogComponent, {
+    data: { user: user  , IsEditMode:true},
+    height: '100%',
+    width: '50%',
+    panelClass: 'activity-dialog',
+    position: { 
+      top: '0', 
+      right: '0' 
+    }
+  });}
 
 }
 

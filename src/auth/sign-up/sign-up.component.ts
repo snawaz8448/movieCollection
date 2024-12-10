@@ -15,7 +15,7 @@ import { LoadingComponent } from "../../app/loading/loading.component";
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatCheckboxModule, MatError, MatInputModule, MatButtonModule, MatSelectModule,
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatCheckboxModule, MatInputModule, MatButtonModule, MatSelectModule,
     RouterModule, LoadingComponent],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
