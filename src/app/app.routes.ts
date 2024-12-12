@@ -19,7 +19,7 @@ export const routes: Routes = [
             {path:'' , redirectTo:'overview' , pathMatch:'full'} ,
             {path:'overview' , loadComponent:()=> import('./admin/dashboard/dashboard/dashboard.component').then(m=> m.DashboardComponent),
                 children:[
-                    {path:'' , redirectTo:'users' , pathMatch:'full'} ,
+                    {path:'' , redirectTo:'home' , pathMatch:'full'} ,
                     {path:'search' , component:SearchtemplateComponent},
                     {path:'profile' , component:ProfiletemplateComponent},
                     {path:'home' , component:HometemplateComponent},
