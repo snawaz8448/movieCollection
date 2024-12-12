@@ -7,12 +7,20 @@
         <div class="action-bar flex flex-col justify-center items-center"
             style="height: calc(100% - 100px); color: white; font-size: 1rem;">
 
+            @for (item of Modules; let i =$index ; track i) {
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
+                <button [routerLink]="item.routerLink" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >
+                    <i [class]="item.icon"></i>
+                </button>
+            </div>
+        }
+
+            <!-- <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
                 <button [routerLink]="['/dashboard/overview/profile']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >
                     <i class="fa-regular fa-user"></i>
                 </button>
-            </div>
-
+            </div> -->
+<!-- 
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
                 <button [routerLink]="['/dashboard/overview/search']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="getAllMovie()">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -42,13 +50,6 @@
                     <i class="fa-solid fa-volleyball"></i>
                 </button>
             </div>
-            <!-- <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
-                <button [routerLink]="['/dashboard/overview/list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-                    <i class="fa-solid fa-list"></i>
-                </button>
-            </div> -->
-            
-            <!-- @if (currentUser.role == 'admin') { -->
             <div class="action flex  justify-center items-center" style="height: 50px; width: 50px;">
                 <button [routerLink]="['/dashboard/overview/users']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
                     <i class="fa-solid fa-users"></i>
@@ -58,8 +59,7 @@
                 <button [routerLink]="['/dashboard/overview/entry']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
                     <i class="fa-brands fa-slack"></i>
                 </button>
-            </div>
-        <!-- } -->
+            </div> -->
         </div>
 
     </div>

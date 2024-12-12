@@ -54,9 +54,19 @@ export class SignInComponent {
         if (res) {
           localStorage.setItem('authToken' , res?.token)
           let user = JSON.stringify(res?.user)
-          localStorage.setItem('currentUser' , user)
+          localStorage.setItem('currentUser' , user);
+          this.authService.GetUserModules(res?.user?._id).subscribe((res:any)=>{
+            console.log(res);
+            this.authService.sendModulesData(res?.data)
+            debugger
+            this.router.navigate(['/dashboard']);
+          },
+          (error) => {
+            this.isSigninLoading=false
+            this.noificationService.showError('error' , error.error.message)
+          }
+        )
         };
-        this.router.navigate(['/dashboard']);
 
       },
       (error)=>{

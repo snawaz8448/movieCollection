@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BaseUrl } from '../app/helper/contant';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable , BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -56,8 +56,11 @@ header = new HttpHeaders();
   };
 
   GetUserModules(id:any): Observable<any> {
-    return this.http.post<any>(BaseUrl+'/user/GetUserModules' , id);
+    return this.http.post<any>(BaseUrl+'/user/GetUserModules' , {id});
   }
 
-
+ GetUserModulesEmitter = new BehaviorSubject<any | null>(null); // Initial value is null
+  sendModulesData(data: any) {
+    this.GetUserModulesEmitter.next(data);
+  }
 }
