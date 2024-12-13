@@ -53,7 +53,7 @@ p.h1,h2,h3 {
 
 /* Movie title styles */
 .movie-title {
-    font-size:14px !important; /* Title size */
+    font-size:14px ; /* Title size */
     margin: 0; /* Remove margin */
     color: #f9c74f; /* Title color */
 }
@@ -115,3 +115,59 @@ img{
     color: #64e60c;
     border: 1px solid lightgreen;
 }
+
+
+
+
+    @media (max-width: 368px) {
+
+      p {
+        font-size: 10px !important;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-size: 10px !important;
+      }
+      span {
+        font-size: 10px !important;
+      }
+      img{
+        height: 120px !important;
+    }
+    .movie-card{
+        width: 100px !important;
+        height: 120px !important;
+    }
+    .movie-card:hover {
+        transform: translateY(-4px); /* Lift effect */
+    }
+    .overlay {
+        padding-bottom: 5%;
+    }
+
+    }
+    @media (min-width: 368px) and (max-width: 600px) {
+
+      p {
+        font-size: 12px !important;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-size: 12px !important;
+      }
+      span {
+        font-size: 12px !important;
+      }
+
+      img{
+        height: 160px !important;
+    }
+    .movie-card{
+        width: 130px !important;
+        height: 160px !important;
+    }
+    .movie-card:hover {
+        transform: translateY(-2px); /* Lift effect */
+    }
+    .overlay {
+        padding-bottom: 5%;
+    }
+    }

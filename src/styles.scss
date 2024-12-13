@@ -116,4 +116,31 @@ mat-form-field{
       color: rgb(235, 58, 255) !important;
     }
 
-  
+
+    @media (max-width: 368px) {
+
+      p {
+        font-size: 12px !important;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-size: 14px !important;
+      }
+      span {
+        font-size: 12px !important;
+      }
+
+    }
+    @media (min-width: 368px) and (max-width: 600px) {
+
+      p {
+        font-size: 14px !important;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-size: 16px !important;
+      }
+      span {
+        font-size: 14px !important;
+      }
+
+    }
+
